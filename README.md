@@ -29,7 +29,7 @@ L'ajout d'une meta box se fait à l'aide d'une nouvelle instance de la class Meta
 	$exMetaBox = new Metabox( $conf, $fields );
 
 Les arguments `$conf` et `$fields` sont obligatoires lorsqu'on instancie de la class. 
-Une erreur fatale sera déclenchées si l'un des deux arguments n'est pas présent. 
+Une erreur fatale sera déclenchée si l'un des deux arguments n'est pas présent. 
 
 ### Configuration de la meta box
 
@@ -38,15 +38,25 @@ Une erreur fatale sera déclenchées si l'un des deux arguments n'est pas présent.
 Le tableau contient les clés suivantes :
 
 * id 
-  * attribut HTML "id" de la meta box
+  * Attribut "id" de la div qui contient les champs de la meta box
   * (string) (required)
-  * Défaut : _none
+  * Défaut : '_none'
 * title 
-  * titre de la meta box
-* page
-  
+  * Titre visible de la meta box
+  * (string) (required)
+  * Défaut : null
+* post_type
+  * Liste des Custom Post Types où la meta box doit être insérée ('post', 'page', 'link', ou 'custom_post_type')
+  * (string/array) (required)
+  * Défaut : 'post'
 * context
+	* La partie de la page où la meta box doit être affichée ('normal', 'advanced', ou 'side').
+	* (string) (required)
+	* Défaut : 'normal'
 * priority
+	* La priorité du contexte où la meta box doivent être affichée ('high', 'core', 'default' or 'low')
+	* (string) (required)
+	* Défaut : 'high'
 
 Les différents types de champ
 -----------

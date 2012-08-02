@@ -47,7 +47,7 @@ if( !class_exists( 'MetaBox' ) ) {
 		private $conf = array(
 			'id'       => '_none',
 			'title'    => null,
-			'page'     => 'post',
+			'post_type'=> 'post',
 			'context'  => 'normal',
 			'priority' => 'high',
 	    );
@@ -202,18 +202,18 @@ if( !class_exists( 'MetaBox' ) ) {
 			// On tranforme les valeurs du tableau en variables
 			extract($this->conf);
 			
-			$pages = (array)$page;
+			$post_types = (array)$post_type;
 			$fields = $this->fields;
 
 			add_action('admin_init',
 					   
-					   function () use( $id, $title, $pages, $context, $priority, $fields ) {
+					   function () use( $id, $title, $post_types, $context, $priority, $fields ) {
 						   
 						   // On check si la fonction add_meta_box existe toujours
 						   if( function_exists( 'add_meta_box' ) ) {
 								
 								// On ajoute la MetaBox pour les CPT que l'on a configuré
-								foreach( $pages as $page ) {
+								foreach( $post_types as $post_type ) {
 									
 									add_meta_box( $id, 
 												  $title,
@@ -322,7 +322,7 @@ if( !class_exists( 'MetaBox' ) ) {
 														do_action( 'wpcf_after_generate_output', $id );
 												  	}
 												  , 
-												  $page, 
+												  $post_type, 
 												  $context, 
 												  $priority 
 											);
@@ -353,7 +353,7 @@ if( !class_exists( 'MetaBox' ) ) {
 			add_action('save_post', 
 	        		   function ( $post_id, $post ) use( $errors, $conf, $fields, $allowed_validators ) {
 		        		  	
-		        		  	if( !in_array( $post->post_type, (array)$conf['page'] ) ) return;
+		        		  	if( !in_array( $post->post_type, (array)$conf['post_type'] ) ) return;
 		        		  	
 		        		  	foreach( $fields as $field ) {
 		        		  		
@@ -477,7 +477,7 @@ if( !class_exists( 'MetaBox' ) ) {
 
 			    			global $typenow;
 			    			
-			    			if( isset( $_GET['message'] ) && $_GET['message'] == 99 && in_array( $typenow, (array)$conf['page'] ) ) {
+			    			if( isset( $_GET['message'] ) && $_GET['message'] == 99 && in_array( $typenow, (array)$conf['post_type'] ) ) {
 				    			
 				    			// On récupère les erreurs
 				    			$errors = get_transient( 'error_metabox_post_' . $conf['id'] . '_' . $_GET['post'] );
