@@ -24,8 +24,28 @@ et d'inclure la class à partir du fichier functions.php comme ci-dessous :
 Comment créer une meta box ?
 -----------
 
-L'ajout d'une meta box se fait à l'aide d'une nouvelle instance de la class MetaBox.
+L'ajout d'une meta box se fait à l'aide d'une nouvelle instance de la class MetaBox comme ci-dessous :
 
+	$exMetaBox = new Metabox( $conf, $fields );
+
+Les arguments `$conf` et `$fields` sont obligatoires lors de l'instance de la class. Une erreur fatal sera déclenchés si l'un des deux n'est pas présent. 
+
+### Configuration de la meta box
+
+`$conf` est un tableau  associatif qui permet de configurer la meta box.
+
+Le tableau contient les clés suivantes :
+
+* id 
+  * attribut HTML "id" de la meta box
+  * (string) (required)
+  * Défaut : _none
+* title 
+  * titre de la meta box
+* page
+  
+* context
+* priority
 
 Les différents types de champ
 -----------
