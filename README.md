@@ -123,10 +123,41 @@ Les différents types de champ
 	);
 
 ### Radio
-
+	
+	$fields[] = array(
+					'name'      => 'cms'
+					'label'     => 'CMS'
+					'type'      => 'radio',
+					'options	=> array(
+								   	  'wordpress'  => 'WordPress',
+								   	  'drupal'     => 'Drupal',
+								   	  'joomla'     => 'Joomla!',
+								   	  'prestashop' => 'Prestashop',
+								   )
+	);
+	
 ### Checkbox
 
+	$fields[] = array(
+					'name'           => 'payant'
+					'label'          => 'Activité payante ?'
+					'type'           => 'checkbox',
+					'label_checkbox' => 'Si coché, cela signifie que l\'activité est payante'
+	);
+
 ### Multi-Checkbox
+
+	$fields[] = array(
+					'name'      => 'competences'
+					'label'     => 'Compétences'
+					'type'      => 'checkbox',
+					'options	=> array(
+								   	  'html-css'   => 'HTML/CSS',
+								   	  'php'        => 'PHP',
+								   	  'javascript' => 'JavaScript',
+								   	  'as3'        => 'Action Script 3',
+								   )
+	);
 
 ### Select
 
@@ -162,7 +193,19 @@ Les différents types de champ
 	
 ### Media
 
+	$fields[] = array(
+					'name'      => 'couverture'
+					'label'     => 'Photo de couverture'
+					'type'      => 'media',
+	);
+
 ### File
+
+	$fields[] = array(
+					'name'      => 'noir-blanc'
+					'label'     => 'Photo en noir & blanc'
+					'type'      => 'file',
+	);
 
 Les paramètres d'un champ
 -----------
