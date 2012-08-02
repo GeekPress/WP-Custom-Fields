@@ -1,7 +1,7 @@
 WP-Custom-Fields
 ================
 
-WP-Custom-Fields est une class PHP qui permet d'ajouter de façon simple et intuitive de nouvelles meta box composés de champs personnalisés ( ou Custom Fields).
+WP-Custom-Fields est une class PHP qui permet d'ajouter de façon simple et intuitive de nouvelles meta box composées de champs personnalisés (ou Custom Fields en anglais).
 
 Crédits
 -----------
@@ -12,7 +12,11 @@ Crédits
 Installation
 -----------
 
-Le dossier "wp-custom-fields" pour être insérer à n'importe quel endroit de votre thème. Il suffit de faire une inclusion de la class à partir du chemin où elle se trouve. Dans l'idéal, je vous conseille de placer le dossier "wp-custom-fields" à la racine de votre thème et d'inclure la class à partir du fichier functions.php comme ci-dessous :
+Après avoir télécharger le dossier "wp-custom-fields", il peut être insérer à n'importe quel endroit de votre thème. 
+Il suffit de faire une inclusion de la class "meta-box.class.php" présente à la racine du dossier "wp-custom-fields". 
+
+Dans l'idéal, je vous conseille de placer le dossier "wp-custom-fields" à la racine de votre thème
+et d'inclure la class à partir du fichier functions.php comme ci-dessous :
 	
 	require_once( TEMPLATEPATH . '/wp-custom-fields/meta-box.class.php' );
 	
@@ -20,7 +24,10 @@ Le dossier "wp-custom-fields" pour être insérer à n'importe quel endroit de votr
 Comment créer une meta box ?
 -----------
 
-Comment créer un nouveau champ ?
+L'ajout d'une meta box se fait à l'aide d'une nouvelle instance de la class MetaBox.
+
+
+Les différents types de champ
 -----------
 
 ### Text
@@ -77,7 +84,7 @@ La liste ci-dessous présente la liste des validateurs disponibles par défaut :
 
 ### Est-ce je peux ajouter mes propres validateurs ?
 
-Oui, cela est possible grâce au filter "wpcf_validators" qui permet de supprimer ou d'insérer des nouveaux validateurs. Les validateurs par défaut sont disponibles dans le premier argument de la fonction de callback.
+Oui, cela est possible en modifiant la variable de retour du filtre "wpcf_validators". Les validateurs par défaut sont disponibles dans le premier argument de la fonction de callback.
 
 L'exemple ci-dessous montre la démarche à suivre pour ajouter un nouveau validateur :
 

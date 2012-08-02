@@ -1,0 +1,495 @@
+/* css for admin notice */
+.wpcf-notice-errors h3 {
+	margin: 1em 0 0.5em !important;	
+}
+
+/* css for meta box item */
+.wpcf-preview img {
+	display: block;
+	margin: 10px 0 5px;
+}
+.wpcf-tinymce {
+	overflow: auto;
+	border: 1px solid #DFDFDF;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	background-color: whiteSmoke;
+}
+
+.wpcf-syntax-error {
+	background: url(img/cross.png) no-repeat;
+	line-height : 16px;
+	padding-left : 20px;
+	color: #880000;
+	font-weight: bold;
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+
+/**
+ * Checkbox iphone
+ * */
+.iPhoneCheckContainer {
+  position: relative;
+  height: 27px;
+  cursor: pointer;
+  overflow: hidden; }
+  .iPhoneCheckContainer input {
+    position: absolute;
+    top: 5px;
+    left: 30px;
+    opacity: 0;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); }
+  .iPhoneCheckContainer label {
+    white-space: nowrap;
+    font-size: 17px;
+    line-height: 17px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: block;
+    height: 27px;
+    position: absolute;
+    width: auto;
+    top: 0;
+    padding-top: 5px;
+    overflow: hidden; }
+  .iPhoneCheckContainer, .iPhoneCheckContainer label {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none; }
+
+.iPhoneCheckDisabled {
+  opacity: 0.5;
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); }
+
+label.iPhoneCheckLabelOn {
+  color: white;
+  background: url('iphone-style-checkboxes/on.png?1282083753') no-repeat;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  left: 0;
+  padding-top: 5px; }
+  label.iPhoneCheckLabelOn span {
+    padding-left: 8px; }
+label.iPhoneCheckLabelOff {
+  color: #CCCCCC;
+  background: url('iphone-style-checkboxes/off.png?1282083753') no-repeat right 0;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.9);
+  text-align: right;
+  right: 0; }
+  label.iPhoneCheckLabelOff span {
+    padding-right: 8px; }
+
+.iPhoneCheckHandle {
+  display: block;
+  height: 27px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  background: url('iphone-style-checkboxes/slider_left.png?1282083753') no-repeat;
+  padding-left: 3px; }
+
+.iPhoneCheckHandleRight {
+  height: 100%;
+  width: 100%;
+  padding-right: 3px;
+  background: url('iphone-style-checkboxes/slider_right.png?1282083753') no-repeat right 0; }
+
+.iPhoneCheckHandleCenter {
+  height: 100%;
+  width: 100%;
+  background: url('iphone-style-checkboxes/slider_center.png?1282083753'); }
+
+
+/* ValidatorEngine */
+/* Z-INDEX */
+ .formError { z-index: 990; }
+    .formError .formErrorContent { z-index: 991; }
+    .formError .formErrorArrow { z-index: 996; }
+    
+    .formErrorInsideDialog.formError { z-index: 5000; }
+    .formErrorInsideDialog.formError .formErrorContent { z-index: 5001; }
+    .formErrorInsideDialog.formError .formErrorArrow { z-index: 5006; }
+
+.inputContainer {
+	position: relative;
+	float: left;
+}
+
+.formError {
+	position: absolute;
+	top: 300px;
+	left: 300px;
+	display: block;
+	cursor: pointer;
+}
+
+.ajaxSubmit {
+	padding: 20px;
+	background: #55ea55;
+	border: 1px solid #999;
+	display: none
+}
+
+.formError .formErrorContent {
+	width: 100%;
+	background: #ee0101;
+	position:relative;
+	color: #fff;
+	width: 150px;
+	font-size: 11px;
+	border: 2px solid #ddd;
+	box-shadow: 0 0 6px #000;
+	-moz-box-shadow: 0 0 6px #000;
+	-webkit-box-shadow: 0 0 6px #000;
+	padding: 4px 10px 4px 10px;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+
+.greenPopup .formErrorContent {
+	background: #33be40;
+}
+
+.blackPopup .formErrorContent {
+	background: #393939;
+	color: #FFF;
+}
+
+.formError .formErrorArrow {
+	width: 15px;
+	margin: -2px 0 0 13px;
+	position:relative;
+}
+body[dir='rtl'] .formError .formErrorArrow,
+body.rtl .formError .formErrorArrow {
+	margin: -2px 13px 0 0;
+}
+
+.formError .formErrorArrowBottom {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	margin: 0px 0 0 12px;
+	top:2px;
+}
+
+.formError .formErrorArrow div {
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	box-shadow: 0 2px 3px #444;
+	-moz-box-shadow: 0 2px 3px #444;
+	-webkit-box-shadow: 0 2px 3px #444;
+	font-size: 0px;
+	height: 1px;
+	background: #ee0101;
+	margin: 0 auto;
+	line-height: 0;
+	font-size: 0;
+	display: block;
+}
+
+.formError .formErrorArrowBottom div {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+.greenPopup .formErrorArrow div {
+	background: #33be40;
+}
+
+.blackPopup .formErrorArrow div {
+	background: #393939;
+	color: #FFF;
+}
+
+.formError .formErrorArrow .line10 {
+	width: 15px;
+	border: none;
+}
+
+.formError .formErrorArrow .line9 {
+	width: 13px;
+	border: none;
+}
+
+.formError .formErrorArrow .line8 {
+	width: 11px;
+}
+
+.formError .formErrorArrow .line7 {
+	width: 9px;
+}
+
+.formError .formErrorArrow .line6 {
+	width: 7px;
+}
+
+.formError .formErrorArrow .line5 {
+	width: 5px;
+}
+
+.formError .formErrorArrow .line4 {
+	width: 3px;
+}
+
+.formError .formErrorArrow .line3 {
+	width: 1px;
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	border-bottom: 0 solid #ddd;
+}
+
+.formError .formErrorArrow .line2 {
+	width: 3px;
+	border: none;
+	background: #ddd;
+}
+
+.formError .formErrorArrow .line1 {
+	width: 1px;
+	border: none;
+	background: #ddd;
+}
+
+/** CORE UNIFORM **/
+.selector, .checker, .button, .radio, .uploader{
+	display: -moz-inline-box;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	=display: inline;
+}
+.selector select:focus, .radio input:focus, .checker input:focus, .uploader input:focus{
+	outline: 0;
+}
+/*Button*/
+div.button a, div.button button, div.button input{
+	position: absolute;
+}
+div.button{
+	cursor: pointer;
+	position: relative;
+}
+div.button span{
+	display: -moz-inline-box;
+	display: inline-block;
+	line-height: 1;
+	text-align: center;
+}
+/*Select*/
+div.selector{
+	position: relative;
+	padding-left: 10px;
+	overflow: hidden;
+}
+div.selector span{
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+div.selector select{
+	position: absolute;
+	opacity: 0;
+	filter: alpha(opacity:0);
+	height: 25px;
+	border: none;
+	background: none;
+}
+/*Checker*/
+div.checker{
+	position: relative;
+}
+div.checker span{
+	display: -moz-inline-box;
+	display: inline-block;
+	text-align: center;
+}
+div.checker input{
+	opacity: 0;
+	filter: alpha(opacity:0);
+	display: inline-block;
+	background: none;
+}
+/*Radio*/
+div.radio{
+	position: relative;
+}
+div.radio span{
+	display: -moz-inline-box;
+	display: inline-block;
+	text-align: center;
+}
+div.radio input{
+	opacity: 0;
+	filter: alpha(opacity:0);
+	text-align: center;
+	display: inline-block;
+	background: none;
+}
+/*Uploader*/
+div.uploader{
+	position: relative;
+	overflow: hidden;
+	cursor: default;
+}
+div.uploader span.action{
+	float: left;
+	display: inline;
+	padding: 2px 0px;
+	overflow: hidden;
+	cursor: pointer;
+}
+div.uploader span.filename{
+	padding: 0px 10px;
+	float: left;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: default;
+}
+div.uploader input{
+	opacity: 0;
+	filter: alpha(opacity:0);
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	float: right;
+	height: 25px;
+	border: none;
+	cursor: default;
+}
+
+/*Checkbox/Radio*/
+.selector, .checker, .button, .radio, .uploader{
+	position: relative;
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+}
+.selector span, .checker span, .button span, .radio span, .uploader span{
+	display: block;
+}
+.checker:hover, .radio:hover{
+	/*+box-shadow:0px 0px 10px #D2D2D2;*/
+	-moz-box-shadow: 0px 0px 10px #D2D2D2;
+	-webkit-box-shadow: 0px 0px 10px #D2D2D2;
+	-o-box-shadow: 0px 0px 10px #D2D2D2;
+	box-shadow: 0px 0px 10px #D2D2D2;
+}
+.checker, .checker span, .checker input, .radio, .radio span, .radio input{
+	width: 50px !important;
+	height: 24px !important;
+	cursor: pointer;
+	margin-bottom: 4px;
+	margin-right: 5px;
+}
+.checker span, .radio span{
+	background: url(img/checkbox.png) bottom left;
+}
+.checker span.checked, .radio span.checked{
+	background-position: top left;
+}
+/*Upload*/
+.uploader{
+	width: 200px !important;
+	height: 25px;
+	position: relative;
+	padding: 0px;
+	margin: 0px;
+}
+.uploader input{
+	position: absolute;
+	width: 200px !important;
+	height: 25px;
+	z-index: 50;
+}
+.uploader span{
+	height: 25px;
+	line-height: 25px;
+}
+.uploader span.action{
+	background: url(img/buttons.png) left -68px;
+	border: 1px solid #3580A9;
+	/*+text-shadow:0px -1px 0px #2C6AA3;*/
+	-moz-text-shadow: 0px -1px 0px #2C6AA3;
+	-webkit-text-shadow: 0px -1px 0px #2C6AA3;
+	-o-text-shadow: 0px -1px 0px #2C6AA3;
+	text-shadow: 0px -1px 0px #2C6AA3;
+	color: #D4E6EF;
+	font-weight: bold;
+	padding: 0 5px;
+	/*+border-radius:3px;*/
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-khtml-border-radius: 3px;
+	border-radius: 3px 3px 3px 3px;
+	/*+box-shadow:0px 1px 5px #B2B2B2;*/
+	-moz-box-shadow: 0px 1px 5px #B2B2B2;
+	-webkit-box-shadow: 0px 1px 5px #B2B2B2;
+	-o-box-shadow: 0px 1px 5px #B2B2B2;
+	box-shadow: 0px 1px 5px #B2B2B2;
+	height: 22px;
+	line-height: 22px;
+	margin-top: 1px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 2;
+	cursor: pointer;
+}
+.uploader.hover span.action, .uploader span.action:hover{
+	background: #3786B9;
+	color: #FFFFFF;
+	text-decoration: none;
+	/*+box-shadow:none;*/
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+}
+
+/* Multi Select */
+.ui-multiselect { padding:2px 0 2px 4px; text-align:left }
+.ui-multiselect span.ui-icon { float:right }
+.ui-multiselect-single .ui-multiselect-checkboxes input { position:absolute !important; top: auto !important; left:-9999px; }
+.ui-multiselect-single .ui-multiselect-checkboxes label { padding:5px !important }
+
+.ui-multiselect-header { margin-bottom:3px; padding:3px 0 3px 4px }
+.ui-multiselect-header ul { font-size:0.9em }
+.ui-multiselect-header ul li { float:left; padding:0 10px 0 0 }
+.ui-multiselect-header a { text-decoration:none }
+.ui-multiselect-header a:hover { text-decoration:underline }
+.ui-multiselect-header span.ui-icon { float:left }
+.ui-multiselect-header li.ui-multiselect-close { float:right; text-align:right; padding-right:0 }
+
+.ui-multiselect-menu { display:none; padding:3px; position:absolute; z-index:10000 }
+.ui-multiselect-checkboxes { position:relative /* fixes bug in IE6/7 */; overflow-y:scroll }
+.ui-multiselect-checkboxes label { cursor:default; display:block; border:1px solid transparent; padding:3px 1px }
+.ui-multiselect-checkboxes label input { position:relative; top:1px }
+.ui-multiselect-checkboxes li { clear:both; font-size:0.9em; padding-right:3px }
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label { text-align:center; font-weight:bold; border-bottom:1px solid }
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label a { display:block; padding:3px; margin:1px 0; text-decoration:none }
+
+/* remove label borders in IE6 because IE6 does not support transparency */
+* html .ui-multiselect-checkboxes label { border:none }
