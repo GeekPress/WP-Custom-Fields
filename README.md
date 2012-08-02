@@ -39,23 +39,23 @@ Le tableau contient les clés suivantes :
 
 * id 
   * Attribut "id" de la div qui contient les champs de la meta box
-  * (string) (required)
+  * (string) (requis)
   * Défaut : '_none'
 * title 
   * Titre visible de la meta box
-  * (string) (required)
+  * (string) (requis)
   * Défaut : null
 * post_type
   * Liste des Custom Post Types où la meta box doit être insérée ('post', 'page', 'link', ou 'custom_post_type')
-  * (string/array) (required)
+  * (string/array)
   * Défaut : 'post'
 * context
 	* La partie de la page où la meta box doit être affichée ('normal', 'advanced', ou 'side').
-	* (string) (required)
+	* (string)
 	* Défaut : 'normal'
 * priority
 	* La priorité du contexte où la meta box doivent être affichée ('high', 'core', 'default' or 'low')
-	* (string) (required)
+	* (string)
 	* Défaut : 'high'
 
 Les différents types de champ
@@ -116,7 +116,7 @@ Par défaut, WP Custom Fields permet l'utilisation de 13 validateurs :
 * image 
 
 
-La code ci-dessous présente chacun des validateurs avec son expression régulière :
+Le code ci-dessous présente chacun des validateurs avec son expression régulière :
 
 	'text' 		=> '/[a-z0-9àáâãäåòóôõöøèéêëçìíîïùúûüÿñ -!?]+$/i',
     'numeric' 	=> '/[0-9]+$/i',
