@@ -6,8 +6,8 @@ WP-Custom-Fields est une class PHP qui permet d'ajouter de façon simple et intui
 Crédits
 -----------
 
-* Auteur : Jonathan Buttigieg alia GeekPress
-* Autheur URI : http://www.geekpress.fr(http://www.geekpress.fr)
+* [Auteur : Jonathan Buttigieg alia GeekPress
+* [Autheur URI : http://www.geekpress.fr(http://www.geekpress.fr)
 
 Installation
 -----------
