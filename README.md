@@ -76,3 +76,11 @@ La liste ci-dessous présente la liste des validateurs disponibles par défaut :
 	'image'		=> '/^(http|https):\/\/[a-z0-9\-\.\/]+\.(?:jpe?g|png|gif)$/i'
 
 ### Comment ajouter un nouveau filtre ?
+
+
+Changelog
+-----------
+
+### 0.1
+
+Version initiale
