@@ -59,9 +59,7 @@ Les validateurs
 
 ### Les validateurs disponibles par défaut
 
-Par défaut, la classe propose un peu plus de 10 validateurs.
-
-La liste ci-dessous présente la liste des validateurs disponibles :
+La liste ci-dessous présente la liste des validateurs disponibles par défaut :
 
 	'text' 		=> '/[a-z0-9àáâãäåòóôõöøèéêëçìíîïùúûüÿñ -!?]+$/i',
     'numeric' 	=> '/[0-9]+$/i',
