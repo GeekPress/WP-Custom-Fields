@@ -63,17 +63,66 @@ Les différents types de champ
 
 ### Text
 
+	$fields[] = array(
+					'name' 	=> 'voiture'
+					'label' => 'Voiture'
+					'type' 	=> 'text',
+	);
+
 ### DatePicker
+
+	$fields[] = array(
+					'name'      => 'date_reservation'
+					'label'     => 'Date de la réservation'
+					'type'      => 'text',
+					'validator' => 'date'
+	);
 
 ### DateTimePicker
 
+	$fields[] = array(
+					'name'      => 'date_time_reservation'
+					'label'     => 'Date et heure de la réservation'
+					'type'      => 'text',
+					'validator' => 'date_time'
+	);
+
 ### TimePicker
 
+### DateTimePicker
+
+	$fields[] = array(
+					'name'      => 'time_seance'
+					'label'     => 'Heure de la séance'
+					'type'      => 'text',
+					'validator' => 'time'
+	);
+
 ### ColorPicker
-
+	
+	$fields[] = array(
+					'name'      => 'color_bg'
+					'label'     => 'Couleur de fond'
+					'type'      => 'text',
+					'validator' => 'hexacolor'
+	);
+	
 ### Textarea
-
+	
+	$fields[] = array(
+					'name'      => 'mission'
+					'label'     => 'Mission'
+					'type'      => 'textarea',
+	);
+	
 ### TinyMCE
+
+	$fields[] = array(
+					'name'      => 'mission'
+					'label'     => 'Mission'
+					'type'      => 'textarea',
+					'tinyMCE'	=> true
+	);
 
 ### Radio
 
