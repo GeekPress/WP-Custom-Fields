@@ -28,7 +28,8 @@ L'ajout d'une meta box se fait à l'aide d'une nouvelle instance de la class Meta
 
 	$exMetaBox = new Metabox( $conf, $fields );
 
-Les arguments `$conf` et `$fields` sont obligatoires lors de l'instance de la class. Une erreur fatal sera déclenchés si l'un des deux n'est pas présent. 
+Les arguments `$conf` et `$fields` sont obligatoires lorsqu'on instancie de la class. 
+Une erreur fatale sera déclenchées si l'un des deux arguments n'est pas présent. 
 
 ### Configuration de la meta box
 
