@@ -84,9 +84,7 @@ L'exemple ci-dessous montre la démarche à suivre pour ajouter un nouveau validat
 	add_filter( 'wpcf_validators', 'my_validators' );
 	
 	function my_validators( $validtors ) {
-		
 		$validators['myregex'] => '/^myregex$/';
-		
 		return $validators;
 	}
 
