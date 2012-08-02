@@ -89,8 +89,6 @@ Les différents types de champ
 
 ### TimePicker
 
-### DateTimePicker
-
 	$fields[] = array(
 					'name'      => 'time_seance'
 					'label'     => 'Heure de la séance'
@@ -132,8 +130,36 @@ Les différents types de champ
 
 ### Select
 
-### Multi-Select
+	$fields[] = array(
+					'name'      => 'langue'
+					'label'     => 'Langue'
+					'type'      => 'select',
+					'options	=> array(
+								   	  'fr' => 'France',
+								   	  'en' => 'Anglais',
+								   	  'de' => 'Allemand',
+								   	  'es' => 'Espagnol',
+								   	  'it' => 'Italien'
+								   )
+	);
 
+### Multi-Select
+	
+	$fields[] = array(
+					'name'      => 'langue'
+					'label'     => 'Langue'
+					'type'      => 'select',
+					'options	=> array(
+								   	  'fr' => 'France',
+								   	  'en' => 'Anglais',
+								   	  'de' => 'Allemand',
+								   	  'es' => 'Espagnol',
+								   	  'it' => 'Italien'
+								   ),
+					'multiple'  => true
+								
+	);
+	
 ### Media
 
 ### File
