@@ -75,7 +75,20 @@ La liste ci-dessous présente la liste des validateurs disponibles par défaut :
 	'time'		=> '/^([0-1]?[0-9]|2[0-4]):([0-5][0-9])$/',
 	'image'		=> '/^(http|https):\/\/[a-z0-9\-\.\/]+\.(?:jpe?g|png|gif)$/i'
 
-### Comment ajouter un nouveau filtre ?
+### Est-ce je peux ajouter mes propres validateurs ?
+
+Oui, cela est possible grâce au filter "wpcf_validators" qui permet de supprimer ou d'insérer des nouveaux validateurs. Les validateurs par défaut sont disponibles dans le premier argument de la fonction de callback.
+
+L'exemple ci-dessous montre la démarche à suivre pour ajouter un nouveau validateur :
+
+	add_filter( 'wpcf_validators', 'my_validators' );
+	
+	function my_validators( $validtors ) {
+		
+		$validators['myregex'] => '/^myregex$/';
+		
+		return $validators;
+	}
 
 
 Changelog
