@@ -12,7 +12,7 @@ Crédits
 Installation
 -----------
 
-Après avoir télécharger le dossier "wp-custom-fields", il peut être insérer à n'importe quel endroit de votre thème. 
+Après avoir télécharger le dossier "wp-custom-fields", il peut être inséré à n'importe quel endroit de votre thème. 
 Il suffit de faire une inclusion de la class "meta-box.class.php" présente à la racine du dossier "wp-custom-fields". 
 
 Dans l'idéal, je vous conseille de placer le dossier "wp-custom-fields" à la racine de votre thème
@@ -64,9 +64,28 @@ Les paramètres d'un champ
 Les validateurs
 -----------
 
-### Les validateurs disponibles par défaut
+WP Custom Fields à la particularité de proposer divers validateurs. 
+Ils permettent de vérifier la valeur d'un champ par rapport au masque d'une expression régulière.
 
-La liste ci-dessous présente la liste des validateurs disponibles par défaut :
+### Les validateurs par défaut
+
+Par défaut, WP Custom Fields permet l'utilisation de 13 validateurs :
+
+* text
+* numreric 
+* number 
+* alpha 
+* alphanum 
+* email 
+* phone 
+* url 
+* hexacolor 
+* date_time 
+* time 
+* image 
+
+
+La code ci-dessous présente chacun des validateurs avec son expression régulière :
 
 	'text' 		=> '/[a-z0-9àáâãäåòóôõöøèéêëçìíîïùúûüÿñ -!?]+$/i',
     'numeric' 	=> '/[0-9]+$/i',
