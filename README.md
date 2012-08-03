@@ -302,7 +302,7 @@ pour manipuler la valeur du champ avant de l'enregistrer en BDD
 qui permet de limiter les extensions de fichier autorisés pour une upload en AJAX
 * Ajout des paramètres de champ "class" et "accesskey" pour tous les types de champ
 * Ajout d'un message d'erreur si l'attribut "name" du champ est vide
-* Ajout du paramètre "maxlength" valable pour les champs de type "text"
+* Ajout du paramètre "maxlength" pour les champs de type "text" et "password"
 * Ajout des paramètres de champ "cols" et "rows" pour gérer les dimensions d'un textarea
 * Ajout d'un wp_localize_script() dans le fichier enqueue.php pour la gestion des textes dans le fichier meta-box.js
 * Vérification de la version de PHP (nécessite PHP 5.3 minimum)
