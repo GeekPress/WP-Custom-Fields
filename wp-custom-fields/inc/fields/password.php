@@ -4,10 +4,10 @@
 	 </th>
 	 <td>
 	 	<input 
-	 		type="text" 
+	 		type="password" 
 	 		name="<?php echo esc_attr( $name ); ?>" 
 	 		id="<?php echo esc_attr( $name ); ?>" 
-	 		class="regular-text <?php echo esc_attr( $validator . ' ' . $validate_js ); ?> <?php echo $class; ?>" 
+	 		class="regular-text <?php echo $class; ?>" 
 	 		value="<?php echo esc_attr( $value ); ?>" 
 	 		<?php echo !empty( $placeholder ) ? ' placeholder="' . esc_attr( $placeholder ) . '"' : ''; ?> 
 	 		<?php echo !empty( $size ) ? ' size="' . intval( $size ) . '"' : ''; ?> 
@@ -19,10 +19,6 @@
 	 	// Add description of the field
 	 	if( $description )
 		 	echo '<p class="description">' . esc_html( $description ) . '</p>';
-
-		// If validator is equal hexacolor, display farbtastic to add color
-		if( $validator == 'hexacolor' )
-			echo '<div id="farbtastic-' . esc_attr( $name ) . '" class="farbtastic"></div>';
 	 	?>
 	 </td>
 </tr>

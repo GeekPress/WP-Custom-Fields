@@ -67,25 +67,25 @@ jQuery(function($) {
 
 		var $previewUpload 		= $(this).siblings('.wpcf-preview'),
 			$inputUpload 		= $(this).siblings( 'input:text' ); 
-
+		
 		new AjaxUpload( this.id, {
 				action: ajaxurl,
 				name: this.id,
 				data: { // Additional data to send
 						action	   			: 'wpcf_ajax_upload_action',
 						data	   			: this.id,
-						post_id	   			: $('#post_ID').val(),
-						_wpcf_nonce 		: $(this).siblings('.update-ajax-nonce').data( 'nonce' )
+						post_ID	   			: $('#post_ID').val(),
+						_wpcf_nonce 		: $(this).siblings('input[name='+this.id+']').val()
 				},
 				autoSubmit: true,
 				responseType: false,
 				onChange: function(file, extension){},
 				onSubmit: function(file, extension){
-					$previewUpload.html( '<img src="/wp-admin/images/wpspin_light.gif" alt="" />' );
+					$previewUpload.html( '<img src="'+wpcf_text_js.spinner_url+'" alt="" />' );
 				},
 				onComplete: function(file, response) {
 					if( response == 'error' ) {
-						$previewUpload.html( '<span class="description wpcf-ajax-error">'+TXT_UPLOAD_AJAX_ERROR+'</span>' );
+						$previewUpload.html( '<span class="description wpcf-ajax-error">'+wpcf_text_js.upload_ajax_error+'</span>' );
 					}
 					else {
 						$inputUpload.val(response);
@@ -145,7 +145,7 @@ jQuery(function($) {
 			// On fait le test par rapport au regex du validator
 			if( !testReg( value, type ) ) {
 				$(this).next('.wpcf-syntax-error').remove();
-				$(this).after('<span class="wpcf-syntax-error">'+TXT_SYNTAX_ERROR+'</span>');
+				$(this).after('<span class="wpcf-syntax-error">'+wpcf_text_js.syntax_error+'</span>');
 			 } else {
 			 	$(this).next('.wpcf-syntax-error').remove();
 			 	
@@ -178,7 +178,7 @@ jQuery(function($) {
 	 			
 	 			// On fait le test par rapport au regex du validator
 				if( !testReg( value, type ) ) {
-					$(this).after('<span class="wpcf-syntax-error">'+TXT_SYNTAX_ERROR+'</span>');
+					$(this).after('<span class="wpcf-syntax-error">'+wpcf_text_js.syntax_error+'</span>');
 					error = true;
 				 } else {
 				 	$(this).next('.wpcf-syntax-error').remove();

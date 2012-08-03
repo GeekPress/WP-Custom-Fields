@@ -138,13 +138,24 @@ function wpcf_add_js_in_footer()
 							true
 						);
 		wp_enqueue_script( 'jquery-ajaxupload' );
-
-
+		
 		/* MetaBox JS File  */
 		wp_register_script( 'wpcf-js',  WPCF_JS_URL . '/meta-box.js',
 							'jquery',
 							'',
 							true
 						);
-   	wp_enqueue_script( 'wpcf-js' );
+		wp_enqueue_script( 'wpcf-js' );
+		
+		
+		/* WP Localize Script  */
+		wp_localize_script(
+					'wpcf-js',
+					'wpcf_text_js',
+					array(
+						'spinner_url' 		=> admin_url( "/images/wpspin_light.gif" ),
+						'upload_ajax_error' => 'Une erreur est survenue lors de l\'upload du fichier',
+						'syntax_error' 	 	=> 'Synthaxe Incorrect'
+					)
+		);
 }

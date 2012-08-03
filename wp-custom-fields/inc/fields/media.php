@@ -1,9 +1,16 @@
 <tr>
 	<th>
-		<label for="<?php echo esc_attr( $name ); ?>"><?php echo esc_attr( $label ); ?></label>
+		<label for="<?php echo esc_attr( $name ); ?>"><?php echo esc_html( $label ); ?></label>
 	</th>
 	<td>
-		<input type="text" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $name ); ?>" class="regular-text <?php echo esc_attr( $validate_js ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+		<input 
+			type="text" 
+			name="<?php echo esc_attr( $name ); ?>" 
+			id="<?php echo esc_attr( $name ); ?>" 
+			class="regular-text <?php echo esc_attr( $validator . ' ' . $validate_js ); ?> <?php echo $class; ?>" 
+			value="<?php echo esc_attr( $value ); ?>"
+			<?php echo !empty( $accesskey ) ? ' accesskey="' . esc_attr( $accesskey ) . '"' : ''; ?>
+		/>
 		<br/>
 		<button class="button-secondary wpcf-upload-media-<?php echo $media_type_mime; ?>-button">Upload</button>
 		<button class="button-secondary wpcf-remove-media-button">Supprimer</button>

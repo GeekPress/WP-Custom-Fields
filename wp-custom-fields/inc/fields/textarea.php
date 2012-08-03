@@ -5,7 +5,14 @@
 	 <td>
 	 	<?php if( $tinyMCE ) echo '<div class="meta-box-tinymce">'; ?>
     	
-    		<textarea name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $name ); ?>" class="<?php if( $required ) echo 'required'; ?> <?php if( $tinyMCE ) echo 'tinyMCE'; ?> <?php echo esc_attr( $validator . ' ' . $validate_js ); ?>" cols="80" rows="5"><?php echo esc_textarea( $value ); ?></textarea>
+    		<textarea 
+    			name="<?php echo esc_attr( $name ); ?>" 
+    			id="<?php echo esc_attr( $name ); ?>" 
+    			class="<?php echo ( $required ) ? 'required' : ''; ?> <?php echo ( $tinyMCE ) ? 'tinyMCE' : '' ; ?> <?php echo $class; ?>" 
+    			<?php echo !empty( $cols ) ? ' cols="' . intval( $cols ) . '"' : ''; ?> 
+    			<?php echo !empty( $cols ) ? ' rows="' . intval( $rows ) . '"' : ''; ?>
+    			<?php echo !empty( $accesskey ) ? ' accesskey="' . esc_attr( $accesskey ) . '"' : ''; ?>
+    		><?php echo esc_textarea( $value ); ?></textarea>
 
     	<?php if( $tinyMCE ) echo '</div>'; ?>
     	

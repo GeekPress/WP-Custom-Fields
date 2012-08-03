@@ -1,14 +1,18 @@
-<?php
-global $post;
-$update_ajax_nonce = wp_create_nonce( 'upload-' . $post->ID . $name );
-?>
+<?php global $post; ?>
 <tr>
 	<th>
-		<label for="<?php echo esc_attr( $name ); ?>"><?php echo esc_attr( $label ); ?></label>
+		<label for="<?php echo esc_attr( $name ); ?>"><?php echo esc_html( $label ); ?></label>
 	</th>
 	<td>
-		<span data-nonce="<?php echo $update_ajax_nonce; ?>" class="update-ajax-nonce"></span>
-		<input type="text" name="<?php echo esc_attr( $name ); ?>" id="<?php echo esc_attr( $name ); ?>" class="regular-text <?php echo esc_attr( $validator . ' ' . $validate_js ); ?>" value="<?php echo esc_attr( $value ); ?>" />
+		<input type="hidden" name="upload_ajax_<?php echo $name; ?>" value="<?php echo wp_create_nonce( 'upload-' . $post->ID . $name ); ?>" />
+		<input 
+			type="text" 
+			name="<?php echo esc_attr( $name ); ?>" 
+			id="<?php echo esc_attr( $name ); ?>" 
+			class="regular-text <?php echo esc_attr( $validator . ' ' . $validate_js ); ?> <?php echo $class; ?>" 
+			value="<?php echo esc_attr( $value ); ?>" 
+			<?php echo !empty( $accesskey ) ? ' accesskey="' . esc_attr( $accesskey ) . '"' : ''; ?>
+		/>
 		<br/>
 		<button id="upload_ajax_<?php echo $name; ?>" class="button-secondary wpcf-upload-ajax-button">Upload</button>
 		<button class="button-secondary wpcf-remove-media-button">Supprimer</button>

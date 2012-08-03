@@ -37,13 +37,13 @@ function wpcf_get_allowed_validators()
  *
 */
 
-add_action( 'admin_footer', 'wpcf_add_regex_rules_validator' );
+add_action( 'admin_footer', 'wpcf_add_regex_rules_validator');
 function wpcf_add_regex_rules_validator()
 {
 
 	global $pagenow;
 	if( $pagenow != 'post.php' && $pagenow != 'post-new.php' ) return;
-
+	
 	// On récupère la liste des validateurs
 	$validators = wpcf_get_allowed_validators();
 	?>
@@ -51,11 +51,9 @@ function wpcf_add_regex_rules_validator()
 			var ruleReg = {
 			<?php
 				foreach ( $validators as $k => $v )
-					echo $k . ' : ' . $v. ','
+					echo  $k . ' : ' . $v . ','
 			?>
-			},
-			TXT_UPLOAD_AJAX_ERROR = "Une erreur est survenue lors de l\'upload du fichier",
-			TXT_SYNTAX_ERROR = "Synthaxe Incorrect";
+			}
 		</script>
 	<?php
 }

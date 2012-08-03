@@ -1,7 +1,9 @@
-WP-Custom-Fields
+WP-Custom-Fields 0.11
 ================
 
 WP-Custom-Fields est une class PHP qui permet d'ajouter de façon simple et intuitive de nouvelles meta box composées de champs personnalisés (ou Custom Fields en anglais).
+
+ATTENTION : La classe requiert l'utilisation de PHP 5.3 ou supérieur.
 
 Crédits
 -----------
@@ -40,11 +42,11 @@ Le tableau contient les clés suivantes :
 * id 
   * Attribut "id" de la div qui contient les champs de la meta box
   * (string) (requis)
-  * Défaut : '_none'
+  * Défaut : None
 * title 
   * Titre visible de la meta box
   * (string) (requis)
-  * Défaut : null
+  * Défaut : None
 * post_type
   * Liste des Custom Post Types où la meta box doit être insérée ('post', 'page', 'link', ou 'custom_post_type')
   * (string/array)
@@ -57,6 +59,14 @@ Le tableau contient les clés suivantes :
 	* La priorité du contexte où la meta box doivent être affichée ('high', 'core', 'default' or 'low')
 	* (string)
 	* Défaut : 'high'
+	
+Dans l'exemple ci-dessous, on crée une meta box qui a comme libélé "Coordonnées". Cette meta bos sera disponible pour les articles, les pages et le Custom Post Type "equipe" :
+	
+	$conf = array(
+			'id'        => '_coordonnees'
+			'title'     => 'Coordonnées',
+			'post_type' => array( 'post', 'page', 'equipe' )
+	);
 
 Les différents types de champ
 -----------
@@ -69,6 +79,14 @@ Les différents types de champ
 					'type' 	=> 'text',
 	);
 
+### Password
+	
+	$fields[] = array(
+					'name' 	=> 'donnee_secrete',
+					'label' => 'Mot de passe',
+					'type' 	=> 'password',
+	);
+	
 ### DatePicker
 
 	$fields[] = array(
@@ -202,10 +220,15 @@ Les différents types de champ
 ### File
 
 	$fields[] = array(
-					'name'      => 'noir-blanc',
-					'label'     => 'Photo en noir & blanc',
-					'type'      => 'file',
-					'validator' => 'image'
+					'name'      		  => 'noir-blanc',
+					'label'     		  => 'Photo en noir & blanc',
+					'type'      		  => 'file',
+					'allowed_mime_type'	  => array(
+												'png'  => 'image/png',
+												'jpg'  => 'image/jpg',
+												'jpeg' => 'image/jpeg',
+												'gif'  => 'image/gif'
+											)
 	);
 
 Les paramètres d'un champ
@@ -267,6 +290,28 @@ L'exemple ci-dessous montre la démarche à suivre pour ajouter un nouveau validat
 
 Changelog
 -----------
+
+### 0.11
+
+* Optimisation du code la class MetaBox
+* Ajout du paramètre de champ "callback" qui permet de faire appel à un fonction de callback 
+pour manipuler la valeur du champ avant de l'enregistrer en BDD
+* Ajout du type de champ "password"
+* Ajout d'un nonce de sécurité sur l'upload en AJAX
+* Gestion du paramètre de champ "allowed_mime_type" 
+qui permet de limiter les extensions de fichier autorisés pour une upload en AJAX
+* Ajout des paramètres de champ "class" et "accesskey" pour tous les types de champ
+* Ajout d'un message d'erreur si l'attribut "name" du champ est vide
+* Ajout du paramètre "maxlength" valable pour les champs de type "text"
+* Ajout des paramètres de champ "cols" et "rows" pour gérer les dimensions d'un textarea
+* Ajout d'un wp_localize_script() dans le fichier enqueue.php pour la gestion des textes dans le fichier meta-box.js
+* Vérification de la version de PHP (nécessite PHP 5.3 minimum)
+* modification du paramètre minSize par min_size
+* modification du paramètre maxSize par max_size
+* Correction de plusieurs conflits entre les champs
+* Correction de sécurité à divers endroits
+* Correction d'un bug sur l'upload en AJAX
+* Correction du lien mort vers l'image wpspin_light.gif lors d'un upload en AJAX
 
 ### 0.1
 
