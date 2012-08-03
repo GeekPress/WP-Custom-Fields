@@ -205,6 +205,7 @@ Les différents types de champ
 					'name'      => 'noir-blanc',
 					'label'     => 'Photo en noir & blanc',
 					'type'      => 'file',
+					'validator' => 'image'
 	);
 
 Les paramètres d'un champ
