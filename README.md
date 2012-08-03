@@ -64,16 +64,16 @@ Les différents types de champ
 ### Text
 
 	$fields[] = array(
-					'name' 	=> 'voiture'
-					'label' => 'Voiture'
+					'name' 	=> 'voiture',
+					'label' => 'Voiture',
 					'type' 	=> 'text',
 	);
 
 ### DatePicker
 
 	$fields[] = array(
-					'name'      => 'date_reservation'
-					'label'     => 'Date de la réservation'
+					'name'      => 'date_reservation',
+					'label'     => 'Date de la réservation',
 					'type'      => 'text',
 					'validator' => 'date'
 	);
@@ -81,8 +81,8 @@ Les différents types de champ
 ### DateTimePicker
 
 	$fields[] = array(
-					'name'      => 'date_time_reservation'
-					'label'     => 'Date et heure de la réservation'
+					'name'      => 'date_time_reservation',
+					'label'     => 'Date et heure de la réservation',
 					'type'      => 'text',
 					'validator' => 'date_time'
 	);
@@ -90,8 +90,8 @@ Les différents types de champ
 ### TimePicker
 
 	$fields[] = array(
-					'name'      => 'time_seance'
-					'label'     => 'Heure de la séance'
+					'name'      => 'time_seance',
+					'label'     => 'Heure de la séance',
 					'type'      => 'text',
 					'validator' => 'time'
 	);
@@ -99,8 +99,8 @@ Les différents types de champ
 ### ColorPicker
 	
 	$fields[] = array(
-					'name'      => 'color_bg'
-					'label'     => 'Couleur de fond'
+					'name'      => 'color_bg',
+					'label'     => 'Couleur de fond',
 					'type'      => 'text',
 					'validator' => 'hexacolor'
 	);
@@ -108,16 +108,16 @@ Les différents types de champ
 ### Textarea
 	
 	$fields[] = array(
-					'name'      => 'mission'
-					'label'     => 'Mission'
+					'name'      => 'mission',
+					'label'     => 'Mission',
 					'type'      => 'textarea',
 	);
 	
 ### TinyMCE
 
 	$fields[] = array(
-					'name'      => 'mission'
-					'label'     => 'Mission'
+					'name'      => 'mission',
+					'label'     => 'Mission',
 					'type'      => 'textarea',
 					'tinyMCE'	=> true
 	);
@@ -125,10 +125,10 @@ Les différents types de champ
 ### Radio
 	
 	$fields[] = array(
-					'name'      => 'cms'
-					'label'     => 'CMS'
+					'name'      => 'cms',
+					'label'     => 'CMS',
 					'type'      => 'radio',
-					'options	=> array(
+					'options'	=> array(
 								   	  'wordpress'  => 'WordPress',
 								   	  'drupal'     => 'Drupal',
 								   	  'joomla'     => 'Joomla!',
@@ -139,8 +139,8 @@ Les différents types de champ
 ### Checkbox
 
 	$fields[] = array(
-					'name'           => 'payant'
-					'label'          => 'Activité payante ?'
+					'name'           => 'payant',
+					'label'          => 'Activité payante ?',
 					'type'           => 'checkbox',
 					'label_checkbox' => 'Si coché, cela signifie que l\'activité est payante'
 	);
@@ -148,10 +148,10 @@ Les différents types de champ
 ### Multi-Checkbox
 
 	$fields[] = array(
-					'name'      => 'competences'
-					'label'     => 'Compétences'
+					'name'      => 'competences',
+					'label'     => 'Compétences',
 					'type'      => 'checkbox',
-					'options	=> array(
+					'options'	=> array(
 								   	  'html-css'   => 'HTML/CSS',
 								   	  'php'        => 'PHP',
 								   	  'javascript' => 'JavaScript',
@@ -162,10 +162,10 @@ Les différents types de champ
 ### Select
 
 	$fields[] = array(
-					'name'      => 'langue'
-					'label'     => 'Langue'
+					'name'      => 'langue',
+					'label'     => 'Langue',
 					'type'      => 'select',
-					'options	=> array(
+					'options'	=> array(
 								   	  'fr' => 'France',
 								   	  'en' => 'Anglais',
 								   	  'de' => 'Allemand',
@@ -177,10 +177,10 @@ Les différents types de champ
 ### Multi-Select
 	
 	$fields[] = array(
-					'name'      => 'langue'
-					'label'     => 'Langue'
+					'name'      => 'langue',
+					'label'     => 'Langue',
 					'type'      => 'select',
-					'options	=> array(
+					'options'	=> array(
 								   	  'fr' => 'France',
 								   	  'en' => 'Anglais',
 								   	  'de' => 'Allemand',
@@ -194,16 +194,16 @@ Les différents types de champ
 ### Media
 
 	$fields[] = array(
-					'name'      => 'couverture'
-					'label'     => 'Photo de couverture'
+					'name'      => 'couverture',
+					'label'     => 'Photo de couverture',
 					'type'      => 'media',
 	);
 
 ### File
 
 	$fields[] = array(
-					'name'      => 'noir-blanc'
-					'label'     => 'Photo en noir & blanc'
+					'name'      => 'noir-blanc',
+					'label'     => 'Photo en noir & blanc',
 					'type'      => 'file',
 	);
 
