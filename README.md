@@ -14,12 +14,7 @@ Crédits
 Donation
 -----------
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="ZZRYQ9MLXSU7Y">
-<input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-<img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-</form>
+[![Donate to WP Custom Fields](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif "Donate to WP Custom Fields")](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=jonathan%2ebuttigieg%40yahoo%2efr&lc=FR&item_name=WP%20Custom%20Fields&no_note=0&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHostedGuest)
 
 
 Installation
