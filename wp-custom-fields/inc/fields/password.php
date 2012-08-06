@@ -1,13 +1,13 @@
 <tr>
 	 <th scope="row">
-	 	<label for="<?php echo esc_attr( $name ); ?>"><?php echo $label; ?></label>
+	 	<label for="<?php echo esc_attr( $name ); ?>"><?php echo esc_html( $label ); ?></label>
 	 </th>
 	 <td>
 	 	<input 
 	 		type="password" 
 	 		name="<?php echo esc_attr( $name ); ?>" 
 	 		id="<?php echo esc_attr( $name ); ?>" 
-	 		class="regular-text <?php echo $class; ?>" 
+	 		class="<?php echo esc_attr( $validate_js ); ?> regular-text <?php echo esc_attr( $class ); ?>" 
 	 		value="<?php echo esc_attr( $value ); ?>" 
 	 		<?php echo !empty( $placeholder ) ? ' placeholder="' . esc_attr( $placeholder ) . '"' : ''; ?> 
 	 		<?php echo !empty( $size ) ? ' size="' . intval( $size ) . '"' : ''; ?> 
@@ -17,8 +17,7 @@
 	 	
 	 	<?php
 	 	// Add description of the field
-	 	if( $description )
-		 	echo '<p class="description">' . esc_html( $description ) . '</p>';
+	 	echo $description ? '<p class="description">' . esc_html( $description ) . '</p>' : '';
 	 	?>
 	 </td>
 </tr>

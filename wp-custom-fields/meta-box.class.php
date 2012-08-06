@@ -42,7 +42,7 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 	// Début de la class
 	class MetaBox {
 
-		const WPCF_VERSION = '0.11'; // Version de WP Custom Fields
+		const WPCF_VERSION = '0.2'; // Version de WP Custom Fields
 
 		private $conf = array(
 			'id'       => '',
@@ -120,16 +120,22 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 
 								'validator'           => NULL, // Le validateur que doit respecter le champ
 
-								'media_type_mime'	  => 'image', // Type mime des médias.
-
 								'allowed_mime_type'	  => array(), // Liste des formats autorisés pour un champ de type "file"
 
 								'iphonecheck'         => NULL, // Si la valeur est true et que le type de champ est checkbox ou radio,
 															   // alors il prendra la forme d'un check iPhone
-
+															   
+								'placeholder'         => NULL, // Placeholder du champ
+								
+								'html5'				  => NULL, // Si la valeur est a true, alors on utilise le type de champ au format HTML5
+								
+								'min'				  => NULL, // Valeur mininum du champ (date, datetime, time)
+								
+								'max'				  => NULL, // Valeur maximum du champ (date, datetime, time)
+								
 								/************************************************
 			                    /*
-			                    /*  Gestion des input
+			                    /*  Gestion des input type text
 			                    /*
 			                    *************************************************/
 
@@ -140,9 +146,31 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 								'min_size'            => NULL, // Nombre de caractères minimum du champ
 
 								'max_size'            => NULL, // Nombre de caractères maximum
-
-								'placeholder'         => NULL, // Placeholder du champ
-
+								
+								/************************************************
+			                    /*
+			                    /*  Gestion des input type date, datetime et time
+			                    /*
+			                    *************************************************/
+								
+								'change_month'		  => NULL, // Permet de modifier le mois via une liste déroulante
+								
+								'change_year'		  => NULL, // Permet de modifier l'année via une liste déroulante
+								
+								'number_of_months'	  => 1, // Nombre de mois affichés
+								
+								'date_format'		  => 'dd/mm/yy', // Format des dates par défaut des DatePicker et TimePicker
+								
+								'time_format'		  => 'hh:mm', // Format des heures par défaut des DatePicker et TimePicker
+								
+								'show_second'		  => NULL, // Afficher les secondes sur un DatePicker ou TimePicker
+								
+								'hour_grid'			  => 4, // Interval des heures affichées
+								
+								'minute_grid'		  => 10, // Interval des minutes affichées
+								
+								'second_grid'		  => 10, // Interval des secondes affichées
+								
 								/************************************************
 			                    /*
 			                    /*  Gestion des checkbox
@@ -185,6 +213,28 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 								'rows'				  => 5, // Attribut HTML "rows"
 
 								'tinyMCE'             => NULL, // Si la valeur est true, alors il sera doté du WYSIWYG TinyMCE
+								
+								
+								// Les paramètres suivants sont utilisés pour configurer le tinyMCE à l'aide de la fonction wp_editor()
+								// Le détail des paramètres est disponible ici : http://codex.wordpress.org/Function_Reference/wp_editor 
+								
+								'wpautop'			  => true,
+								
+								'media_buttons'		  => true,
+								
+								'textarea_rows'		  => 10,
+								
+								'tabindex'			  => NULL,
+								
+								'editor_css'		  => NULL,
+								
+								'editor_class'		  => NULL,
+								
+								'teeny'		  		  => false,
+								
+								'dfw'				  => false,
+								
+								'quicktags'			  => true,
 
 								/************************************************
 			                    /*
@@ -196,7 +246,7 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 
 								'text_no_js_error_validator' => NULL, // champ avec un validateur
 
-								'text_no_js_error_minSize'   => NULL, // champ avec un minimum de caractères
+								'text_no_js_error_min_size'   => NULL, // champ avec un minimum de caractères
 
 								'text_no_js_error_max_size'  => NULL  // champ avec un maximum de caractères
 							)
@@ -277,13 +327,12 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 
 											            ob_start();
 
-											            $VErequired 	= $required ? 'required' : '';
-											            $VEminSize  	= $min_size >= 1 ? ',minSize[' . intval( $min_size ) . ']' : '';
-											            $VEmaxSize  	= $max_size >= 1 ? ',maxSize[' . intval( $max_size ) . ']': '';
-											            $VEmin_checked	= $min_checked >= 1 ? ',minCheckbox[' . intval( $min_checked ) . ']' : '';
-											            $VEmax_checked	= $max_checked >= 1 ? ',maxCheckbox[' . intval( $max_checked ) . ']' : '';
-
-											           echo 'validate[' . $VErequired
+											            $VErequired = $required ? 'required' : '';
+														$VEminSize  = $min_size >= 1 ? ',minSize[' . intval( $min_size ) . ']' : '';
+														$VEmin_checked	= $min_checked >= 1 ? ',minCheckbox[' . intval( $min_checked ) . ']' : '';
+														$VEmax_checked	= $max_checked >= 1 ? ',maxCheckbox[' . intval( $max_checked ) . ']' : '';
+																											            
+											            echo 'validate[' . $VErequired
 											           					. $VEminSize
 											           					. $VEmaxSize
 											           					. $VEmin_checked
@@ -291,12 +340,12 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 											           					. ']';
 
 											            $validate_js = ob_get_clean();
-
-
+											            
+											            
 											            /************************************************
 									                    /*
-									                    /* On construit la class CSS qui va permettre de faire les vérifications
-									                    /* JS sur un select avec le plugin MultiSelect Widget
+									                    /* On construit la liste des attributs data-XX qui vont permettre 
+									                    /* de faire les vérifications JS sur un select avec le plugin MultiSelect Widget
 									                    /*
 									                    *************************************************/
 
@@ -388,9 +437,9 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 
 		        		  	foreach( $fields as $field ) {
 
-		        		  		extract($field);
+		        		  		extract( $field );
 
-			        		  	$value = $_POST[$name]; // $value est la valeur du champ
+			        		  	$value = $_POST[ str_replace( '[]', '', $name ) ]; // $value est la valeur du champ
 
 			                    /************************************************
 			                    /*
@@ -417,10 +466,26 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 				                    /*  et que la valeur ne soit pas stockée dans un tableau
 				                    /*
 				                    *************************************************/
-
+				                    
+				                    switch( $type ) {
+										case 'color' :
+											$validator = 'hexacolor';
+											break;
+										case 'date' :
+											$validator = 'date';
+											break;			                    
+										case 'datetime' :
+											$validator = 'datetime';
+											break;			                    
+										case 'time' :
+											$validator = 'time';
+											break;			                    
+				                    }
+				                    
 			                		if( !is_array( $value )
 			                			&& array_key_exists( $validator, $allowed_validators )
-			                			&& !preg_match($allowed_validators[$validator], $value) && $value != ''
+			                			&& !preg_match( $allowed_validators[$validator], $value ) 
+			                			&& $value != ''
 			                		  )
 
 			                			if( $text_no_js_error_validator )
@@ -431,11 +496,12 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 
 			                		/************************************************
 				                    /*
+				                    /*  TYPE TEXT
 				                    /*  On vérifie si le champ doit avoir une taille minimum de caractère
 				                    /*
 				                    *************************************************/
 
-			                		if( isset( $min_size ) && strlen( $value ) < intval( $min_size ) ) {
+			                		if( $type == 'text' && isset( $min_size ) && strlen( $value ) < intval( $min_size ) ) {
 
 				                		if( $text_no_js_error_min_size )
 			                				array_push( $errors, '<p>' . esc_html( $text_no_js_error_min_size ) . '</p>');
@@ -446,17 +512,56 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 
 			                		/************************************************
 				                    /*
-				                    /*  On vérifie si le champ doit avoir une taille maximum de caractère
+				                    /*  TYPE TEXT
+				                    /*  On vérifie si le champ doit avoir une taille maximum de caractère (type="text")
 				                    /*
 				                    *************************************************/
 
-			                		if( isset( $max_size ) && strlen( $value ) > $max_size ) {
+			                		if( $type == 'text' && isset( $max_size ) && strlen( $value ) > $max_size ) {
 
 				                		if( $text_no_js_error_max_size )
 			                				array_push( $errors, '<p>' . esc_html( $text_no_js_error_max_size ) . '</p>');
 			                			else
 			                				array_push( $errors, '<p>' . sprintf( __( 'Le champ <strong>%s</strong> doit avoir une taille maximum de <strong>%d</strong> caractères.'), $label, $max_size ) . '</p>');
 			                		}
+			                		
+			                		/************************************************
+				                    /*
+				                    /*  TYPE CHECKBOX
+				                    /*  On vérifie si le champ contient le nombre de checked minimum requis autorisé
+				                    /*
+				                    *************************************************/
+				                    
+				                    if( $type == 'checkbox' && isset( $min_checked ) && !count( $value ) >= intval( $min_checked )  ) {
+					                   
+					                    if( $text_no_js_error_min_checked )
+			                				array_push( $errors, '<p>' . esc_html( $text_no_js_error_min_checked ) . '</p>');
+			                			else
+			                				array_push( $errors, '<p>' . sprintf( __( 'Le champ <strong>%s</strong> doit avoir au moins <strong>%d</strong> option(s) de coché(s).'), $label, $min_checked ) . '</p>');
+					                    
+				                    }
+				                    
+			                		/************************************************
+				                    /*
+				                    /*  TYPE CHECKBOX
+				                    /*  On vérifie si le champ ne dépasse pas le nombre de checked maximum autorisé
+				                    /*
+				                    *************************************************/
+				                    
+				                    if( $type == 'checkbox' && isset( $max_checked ) && count( $value ) > intval( $max_checked )  ) {
+					                    
+					                    if( $text_no_js_error_max_checked )
+			                				array_push( $errors, '<p>' . esc_html( $text_no_js_error_max_checked ) . '</p>');
+			                			else
+			                				array_push( $errors, '<p>' . sprintf( __( 'Le champ <strong>%s</strong> ne doit pas avoir plus de <strong>%d</strong> option(s) de coché(s).'), $label, $max_checked ) . '</p>');
+					                    
+				                    }
+				                    
+				                    // On détruit les variables de paramètre du champ
+						            // pour ne pas avoir de conflit avec la prochaine itération
+						            foreach( $field as $f )
+						            	unset( $f );
+				                    
 			                	}
 
 			                	/************************************************
@@ -485,7 +590,6 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 				                	set_transient( 'error_metabox_post_' . $conf['id'] . '_' . $post_id, $errors );
 			                	}
 		        		  }
-						  return $data;
 	        		   },
 	        		   10,
 	        		   2
@@ -558,7 +662,7 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 							) return $post_id;
 
 					        foreach( $fields as $field ) {
-
+						        
 					            /************************************************
 			                    /*
 			                    /* Gestion de la fonction de callback du champ
@@ -567,39 +671,36 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 			                    /*
 			                    *************************************************/
 
-					            $value = $_POST[$field['name']];
+					            $value = $_POST[ str_replace( '[]', '', $field['name'] ) ];
+					            
 					            $value = is_callable( $field['callback'] ) ? call_user_func( $field['callback'] , $value ) : $value;
-
+					            
 					            /************************************************
 			                    /*
 			                    /* On gère l'enregistrement de la valeur du champ
 			                    /*
 			                    *************************************************/
 
-					            if ( isset( $field['name'] ) && !empty( $field['name'] ) ) {
+				                 // Avant d'enregistrer la nouvelle valeur, on supprime tous les champs personnalisés du post actuel
+				                 delete_post_meta( $post_id, $field['name'] );
+				                 
+				                 if( $field['options'] && is_array( $value )  ) {
+				                 	 foreach( $value as $v ) {
 
-					                 // Avant d'enregistrer la nouvelle valeur, on supprime tous les champs personnalisés du post actuel
-					                 delete_post_meta( $post_id, $field['name'] );
+				                 		add_post_meta( $post_id,
+				                 					   $field['name'],
+				                 					   $v
+				                 					  );
+				                 	}
+				                 }
+				                 else {
 
-					                 if( $field['options'] && is_array( $value )  ) {
-					                 	 foreach( $value as $v ) {
-
-					                 		add_post_meta( $post_id,
-					                 					   $field['name'],
-					                 					   $v
-					                 					  );
-					                 	}
-					                 }
-					                 else {
-
-					                  	add_post_meta( $post_id,
-					                  				   $field['name'],
-					                  				   $value
-					                  				 );
-					                 }
-					             }
+				                  	add_post_meta( $post_id,
+				                  				   $field['name'],
+				                  				   $value
+				                  				 );
+				                 }
 					        }
-
 		 			   },
 		 			   10,
 		 			   2

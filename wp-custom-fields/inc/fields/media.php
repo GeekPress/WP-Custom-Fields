@@ -7,23 +7,23 @@
 			type="text" 
 			name="<?php echo esc_attr( $name ); ?>" 
 			id="<?php echo esc_attr( $name ); ?>" 
-			class="regular-text <?php echo esc_attr( $validator . ' ' . $validate_js ); ?> <?php echo $class; ?>" 
+			class="<?php echo esc_attr( $validator . ' ' . $validate_js ); ?> regular-text  <?php echo esc_attr( $class ); ?>" 
 			value="<?php echo esc_attr( $value ); ?>"
 			<?php echo !empty( $accesskey ) ? ' accesskey="' . esc_attr( $accesskey ) . '"' : ''; ?>
 		/>
 		<br/>
-		<button class="button-secondary wpcf-upload-media-<?php echo $media_type_mime; ?>-button">Upload</button>
+		<button class="button-secondary wpcf-upload-media-button">Upload</button>
 		<button class="button-secondary wpcf-remove-media-button">Supprimer</button>
 		<div class="wpcf-preview">
 			<?php
-			if( $media_type_mime == 'image' && !empty( $value ) )
+			if( !empty( $value ) && preg_match('/(http|https):\/\/[a-z0-9\-\.\/]+\.(?:jpe?g|png|gif)/i' , $value ) == 1 )
 				echo '<img src="' . esc_url( $value ) . '" alt="" />';
 			?>
 		</div>
 		
 		<?php
-	 	if( $description )
-		 	echo '<p class="description">' . esc_html( $description ) . '</p>';
+	 	// Add description of the field
+	 	echo $description ? '<p class="description">' . esc_html( $description ) . '</p>' : '';
 	 	?>
 	</td>
 </tr>

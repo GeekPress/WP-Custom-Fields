@@ -4,6 +4,18 @@
 }
 
 /* css for meta box item */
+input[type="date"], 
+input[type="datetime"],
+input[type="time"],
+input[type="color"] {
+	background-color: #FFFFFF;
+    border-color: #DFDFDF;
+    color: #333333;
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1px;
+}
+
 .wpcf-preview img {
 	display: block;
 	margin: 10px 0 5px;
@@ -16,7 +28,7 @@
 	-webkit-border-radius: 4px;
 	-o-border-radius: 4px;
 	border-radius: 4px;
-	background-color: whiteSmoke;
+	background-color: #FFFFFF;
 }
 
 .wpcf-syntax-error {

@@ -1,16 +1,63 @@
 jQuery(function($) {
 	
 	/* Date Picker */
-	$('.date').datepicker();
+	if (!Modernizr.inputtypes.date ) { $inputDate = "input.date" }
+	else { $inputDate = "input[type=text].date" }
+	
+	$($inputDate).each( function() {
+	  	$(this).datepicker({
+		  	minDate : $(this).attr('min'),
+			maxDate : $(this).attr('max'),
+			dateFormat : $(this).attr('data-date-format'),
+			changeMonth : $(this).attr('data-change-month'),
+			changeYear : $(this).attr('data-change-year'),
+			numberOfMonths : parseInt($(this).attr('data-number-of-months')),
+	  	});
+	});
 	
 	/* DateTime Picker */
-	$('.date_time').datetimepicker({hourGrid: 4,minuteGrid: 10});
+	if (!Modernizr.inputtypes.datetime ) { $inputDateTime = "input.datetime" }
+	else { $inputDateTime = "input[type=text].datetime" }
+	
+	$($inputDateTime).each( function() {
+	  	$(this).datetimepicker({
+		  	minDate : $(this).attr('min'),
+			maxDate : $(this).attr('max'),
+			dateFormat : $(this).attr('data-date-format'),
+			changeMonth : $(this).attr('data-change-month'),
+			changeYear : $(this).attr('data-change-year'),
+			numberOfMonths : parseInt($(this).attr('data-number-of-months')),
+			timeFormat : $(this).attr('data-time-format'),
+			showSecond : $(this).attr('data-show-second'),
+			hourGrid: parseInt($(this).attr('data-hour-grid')),
+			minuteGrid: parseInt($(this).attr('data-minute-grid')),
+			secondeGrid: parseInt($(this).attr('data-second-grid'))
+	  	});
+	});
 	
 	/* Time Picker */
-	$('.time').timepicker({ hourGrid: 4, minuteGrid: 10 });
+	if (!Modernizr.inputtypes.time ) { $inputTime = "input.time" }
+	else { $inputTime = "input[type=text].time" }
+	
+	$($inputTime).each( function() {
+		$(this).timepicker({ 
+			timeFormat : $(this).attr('data-time-format'),
+			showSecond : $(this).attr('data-show-second'),
+			hourGrid: parseInt($(this).attr('data-hour-grid')),
+			minuteGrid: parseInt($(this).attr('data-minute-grid')),
+			secondeGrid: parseInt($(this).attr('data-second-grid'))
+		});
+	});
 	
 	/* Color Picker */
-	$('.hexacolor').each(function() {	
+	if (!Modernizr.inputtypes.color ) { $inputColor = "input.hexacolor" }
+	else { $inputColor = "input[type=text].hexacolor" }
+	
+	$($inputColor).each(function() {	
+		
+		// On ajoute la div necessaire à Farbastic
+		$(this).after('<div id="farbtastic-'+this.id+'" class="farbtastic hide-if-no-js"></div>');
+		
 		var current = $('#farbtastic-'+this.id);
     	current.hide();
     	current.farbtastic(this);
@@ -28,19 +75,11 @@ jQuery(function($) {
         });
     });
     
-    /* tinyMCE */
-    $(".tinyMCE").each(function() {
-	    $(this).addClass("mceEditor");
-		if ( typeof( tinyMCE ) == "object" && typeof( tinyMCE.execCommand ) == "function" ) {
-			tinyMCE.execCommand("mceAddControl", false, this.id);
-		}    
-    });
-
 	/* Uniform JS */	
 	$(".iphonecheck").uniform();
 	
 	/* Media Library */
-	$('.wpcf-upload-media-image-button').click(function() {
+	$('.wpcf-upload-media-button').click(function() {
 		var inputUpload = $(this).siblings('input:text').attr('id'),
 			$previewUpload 	= $(this).siblings('.wpcf-preview');
 											 
@@ -128,13 +167,13 @@ jQuery(function($) {
    $('form#post').validationEngine('attach');
     
    /*  Validator Check  */
-   $('.wpcf-metabox input:text').blur( function() {
+   $('.wpcf-metabox input').blur( function() {
 		
 		// On récupère la class validator du champ
 		// Il s'agit de la 2ème class présente dans l'attribut class
 		var type = $(this).attr('class')
 						  .split(' ')
-						  .slice(1, 2);
+						  .slice(0, 1);
 		
 		// On stocke la valeur du champ
 		var value = $(this).val();
