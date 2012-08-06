@@ -103,12 +103,12 @@ if( !class_exists( 'MetaBox' ) && version_compare( PHP_VERSION, '5.3', '>=') ) {
 								'label'				  => NULL, // Label du champ
 
 								'type'                => 'text', // Type de champ
-
+								
+								'std'                 => NULL, // La valeur par défaut du champ
+								
 								'class'				  => NULL, // Liste des class CSS du champ
 
 								'accesskey' 		  => NULL, // Raccourci clavier pour accéder à un élément
-
-								'std'                 => NULL, // La valeur par défaut du champ
 
 								'description'		  => NULL, // Description du champ
 
